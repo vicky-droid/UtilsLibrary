@@ -12,3 +12,4 @@ inline fun Context.toast(text: CharSequence): Toast = Toast.makeText(this, text,
 
 inline fun Context.longToast(text: CharSequence): Toast = Toast.makeText(this, text, Toast.LENGTH_LONG).apply { show() }
 
+val TAG ="UtilsLibrary"
