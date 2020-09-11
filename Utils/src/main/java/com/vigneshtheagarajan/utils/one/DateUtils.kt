@@ -7,6 +7,7 @@ import android.net.ParseException
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import com.vigneshtheagarajan.utils.R
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -37,7 +38,7 @@ fun Long.asDateString(format: String? = "yyyy-MM-dd HH:mm:ss"): String = Date(th
 private fun EditText.datepicker(context: Context, format: String?){
     var cal = Calendar.getInstance()
 
-    DatePickerDialog(context , DatePickerDialog.OnDateSetListener { p0, y, m, d ->
+    DatePickerDialog(context , R.style.MyTimePickerDialogTheme,DatePickerDialog.OnDateSetListener { p0, y, m, d ->
 
         cal.set(Calendar.YEAR, y)
         cal.set(Calendar.MONTH, m)
@@ -57,7 +58,7 @@ private fun EditText.datepicker(context: Context, format: String?){
 private fun TextView.datepicker(context: Context, format: String) {
     var cal = Calendar.getInstance()
 
-    DatePickerDialog(context , DatePickerDialog.OnDateSetListener { p0, y, m, d ->
+    DatePickerDialog(context , R.style.MyTimePickerDialogTheme,DatePickerDialog.OnDateSetListener { p0, y, m, d ->
 
         cal.set(Calendar.YEAR, y)
         cal.set(Calendar.MONTH, m)
@@ -74,7 +75,7 @@ private fun TextView.datepicker(context: Context, format: String) {
         .show()
 }
 
-fun TextView.Timepicker(format: String?="HH:mm") {
+fun TextView.setTimepicker(format: String?="HH:mm") {
 
         val cal = Calendar.getInstance()
 
@@ -85,13 +86,13 @@ fun TextView.Timepicker(format: String?="HH:mm") {
         }
 
         this.setOnClickListener {
-            TimePickerDialog(context, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+            TimePickerDialog(context,R.style.MyTimePickerDialogTheme, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
 
         }
 
 }
 
-fun EditText.Timepicker(format: String?="HH:mm") {
+fun EditText.setTimepicker(format: String?="HH:mm") {
 
         val cal = Calendar.getInstance()
 
@@ -102,7 +103,8 @@ fun EditText.Timepicker(format: String?="HH:mm") {
         }
 
         this.setOnClickListener {
-            TimePickerDialog(context, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+            TimePickerDialog(context,
+                R.style.MyTimePickerDialogTheme, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
 
         }
 

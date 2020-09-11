@@ -35,7 +35,7 @@ fun Context.showRadioButtonListAlert(
         builder.setTitle(title)
 
 // add a radio button list
-    val checkedItem = 1
+    val checkedItem = 0
     builder.setSingleChoiceItems(list, checkedItem) { dialog, which ->
         // user checked an item
         if (!isShowOKButton) {

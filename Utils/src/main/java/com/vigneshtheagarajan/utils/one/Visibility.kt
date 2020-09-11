@@ -8,10 +8,10 @@ var View.visible
         visibility = if (value) View.VISIBLE else View.GONE
     }
 
-inline fun View.hide(gone: Boolean = true) {
+fun View.hide(gone: Boolean = true) {
     visibility = if (gone) View.GONE else View.INVISIBLE
 }
 
-inline fun View.show() {
+fun View.show() {
     visibility = View.VISIBLE
 }
