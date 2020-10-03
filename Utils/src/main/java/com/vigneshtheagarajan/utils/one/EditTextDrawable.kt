@@ -3,6 +3,7 @@ package com.vigneshtheagarajan.utils.one
 import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.widget.EditText
+import java.util.regex.Pattern
 
 @SuppressLint("ClickableViewAccessibility")
 fun EditText.onRightDrawableClicked(onClicked: (view: EditText) -> Unit) {
@@ -43,4 +44,11 @@ fun EditText.getStringValidation(): String {
     } else
         this.error = null
     return this.text.toString()
+}
+
+fun EditText.isEmailValid(email: String): Boolean {
+    val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
+    val pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
+    val matcher = pattern.matcher(email)
+    return matcher.matches()
 }
