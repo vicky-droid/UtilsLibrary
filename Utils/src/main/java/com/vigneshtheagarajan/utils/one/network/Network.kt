@@ -1,4 +1,4 @@
-package com.vigneshtheagarajan.utils.one
+package com.vigneshtheagarajan.utils.one.network
 
 import android.content.Context
 import android.net.ConnectivityManager
