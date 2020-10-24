@@ -5,14 +5,19 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 class DatabindingAdapter<T : BaseModel> :
     RecyclerView.Adapter<DatabindingAdapter.GenericVH<T>>() {
 
+
     private var items = mutableListOf<T>()
     private var layoutId: Int = 0
     private var itemViewModelId = 0
+    private var isLoading = false
+    private var pageNo = 1
+    var loadMore: ((Boolean?, Int?) -> Unit)? = null
 
 
     fun setLayout(@LayoutRes layoutId: Int): DatabindingAdapter<T> {
@@ -30,9 +35,16 @@ class DatabindingAdapter<T : BaseModel> :
         notifyDataSetChanged()
     }
 
+
     fun updateItems(items: ArrayList<T>) {
-        this.items = items
-        notifyDataSetChanged()
+        pageNo += 1
+        val oldList = ArrayList(this.items)
+        this.items.addAll(items)
+        val diffResult = DiffUtil.calculateDiff(NewDiffUtil(oldList, this.items))
+        diffResult.dispatchUpdatesTo(this)
+        isLoading = false
+
+
     }
 
 
@@ -41,6 +53,10 @@ class DatabindingAdapter<T : BaseModel> :
     override fun onBindViewHolder(holder: GenericVH<T>, position: Int) {
         val itemViewModel = items[position]
         holder.bind(itemViewModel, itemViewModelId)
+        if (position >= itemCount - 1 && !isLoading) {
+            isLoading = true
+            loadMore?.invoke(isLoading, pageNo)
+        }
     }
 
 
