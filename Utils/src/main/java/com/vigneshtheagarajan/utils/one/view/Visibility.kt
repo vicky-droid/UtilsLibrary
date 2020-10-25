@@ -1,4 +1,4 @@
-package com.vigneshtheagarajan.utils.one
+package com.vigneshtheagarajan.utils.one.view
 
 import android.view.View
 

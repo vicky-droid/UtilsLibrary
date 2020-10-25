@@ -1,4 +1,4 @@
-package com.vigneshtheagarajan.utils.one
+package com.vigneshtheagarajan.utils.one.view
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -58,20 +58,24 @@ private fun EditText.datepicker(context: Context, format: String?){
 private fun TextView.datepicker(context: Context, format: String) {
     var cal = Calendar.getInstance()
 
-    DatePickerDialog(context , R.style.MyTimePickerDialogTheme,DatePickerDialog.OnDateSetListener { p0, y, m, d ->
+    DatePickerDialog(
+        context,
+        R.style.MyTimePickerDialogTheme,
+        DatePickerDialog.OnDateSetListener { p0, y, m, d ->
 
-        cal.set(Calendar.YEAR, y)
-        cal.set(Calendar.MONTH, m)
-        cal.set(Calendar.DAY_OF_MONTH, d)
+            cal.set(Calendar.YEAR, y)
+            cal.set(Calendar.MONTH, m)
+            cal.set(Calendar.DAY_OF_MONTH, d)
 
-        val sdf = SimpleDateFormat(format, Locale.ENGLISH)
-        val dt=sdf.format(cal.time)
-        this.setText(dt)
+            val sdf = SimpleDateFormat(format, Locale.ENGLISH)
+            val dt = sdf.format(cal.time)
+            this.text = dt
 
-    },
+        },
         cal.get(Calendar.YEAR),
         cal.get(Calendar.MONTH),
-        cal.get(Calendar.DAY_OF_MONTH))
+        cal.get(Calendar.DAY_OF_MONTH)
+    )
         .show()
 }
 

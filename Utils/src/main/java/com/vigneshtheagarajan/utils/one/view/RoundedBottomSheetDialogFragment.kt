@@ -1,10 +1,10 @@
-package com.vigneshtheagarajan.utils.one
+package com.vigneshtheagarajan.utils.one.view
 
 import android.app.Dialog
 import android.os.Bundle
-import com.vigneshtheagarajan.utils.R
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.vigneshtheagarajan.utils.R
 
 open class RoundedBottomSheetDialogFragment : BottomSheetDialogFragment() {
 

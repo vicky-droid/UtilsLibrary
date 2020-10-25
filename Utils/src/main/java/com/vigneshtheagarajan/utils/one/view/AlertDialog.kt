@@ -1,8 +1,9 @@
-package com.vigneshtheagarajan.utils.one
+package com.vigneshtheagarajan.utils.one.view
 
 import android.content.Context
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
+import com.vigneshtheagarajan.utils.one.TAG
 
 fun Context.showListAlert(list: Array<String>, title: String? = null, value: (Int) -> Unit) {
     // setup the alert builder
