@@ -2,6 +2,7 @@ package com.vigneshtheagarajan.utils.one
 
 import android.annotation.SuppressLint
 import android.view.MotionEvent
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import java.util.regex.Pattern
 
@@ -51,4 +52,44 @@ fun EditText.isEmailValid(email: String): Boolean {
     val pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
     val matcher = pattern.matcher(email)
     return matcher.matches()
+}
+
+fun EditText.onSearch(callback: () -> Unit) {
+    setOnEditorActionListener { _, actionId, _ ->
+        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            callback.invoke()
+            true
+        }
+        false
+    }
+}
+
+fun EditText.onDone(callback: () -> Unit) {
+    setOnEditorActionListener { _, actionId, _ ->
+        if (actionId == EditorInfo.IME_ACTION_DONE) {
+            callback.invoke()
+            true
+        }
+        false
+    }
+}
+
+fun EditText.onNext(callback: () -> Unit) {
+    setOnEditorActionListener { _, actionId, _ ->
+        if (actionId == EditorInfo.IME_ACTION_NEXT) {
+            callback.invoke()
+            true
+        }
+        false
+    }
+}
+
+fun EditText.onSend(callback: () -> Unit) {
+    setOnEditorActionListener { _, actionId, _ ->
+        if (actionId == EditorInfo.IME_ACTION_SEND) {
+            callback.invoke()
+            true
+        }
+        false
+    }
 }
