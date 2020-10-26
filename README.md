@@ -17,3 +17,7 @@ Step 2. Add the dependency
 	dependencies {
 	        implementation 'com.github.vicky-droid:UtilsLibrary:Tag'
 	}
+
+[![](https://jitpack.io/v/vicky-droid/UtilsLibrary.svg)](https://jitpack.io/#vicky-droid/UtilsLibrary)
+
+	
