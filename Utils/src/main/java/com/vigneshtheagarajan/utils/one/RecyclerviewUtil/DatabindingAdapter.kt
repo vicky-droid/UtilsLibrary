@@ -31,13 +31,15 @@ class DatabindingAdapter<T : BaseModel> :
     }
 
     fun setItems(items: ArrayList<T>) {
+        pageNo = 1
         this.items = items
         notifyDataSetChanged()
     }
 
 
     fun updateItems(items: ArrayList<T>) {
-        pageNo += 1
+        if (items.isNotEmpty())
+            pageNo += 1
         val oldList = ArrayList(this.items)
         this.items.addAll(items)
         val diffResult = DiffUtil.calculateDiff(NewDiffUtil(oldList, this.items))

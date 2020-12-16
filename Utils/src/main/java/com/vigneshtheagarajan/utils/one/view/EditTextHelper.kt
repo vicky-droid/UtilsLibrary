@@ -93,3 +93,12 @@ fun EditText.onSend(callback: () -> Unit) {
         false
     }
 }
+
+
+fun EditText.enableEdit() {
+    this.isEnabled = true
+}
+
+fun EditText.disableEdit() {
+    this.isEnabled = false
+}

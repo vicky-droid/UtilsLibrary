@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
 import android.net.ParseException
-import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import com.vigneshtheagarajan.utils.R
@@ -115,17 +114,15 @@ fun EditText.setTimepicker(format: String?="HH:mm") {
 }
 
 
-fun View.setDatePickerET(format:String? = "dd-MM-yyyy") {
-    this as EditText
+fun EditText.setDatePickerET(format: String? = "dd-MM-yyyy") {
     this.setOnClickListener {
-        this.datepicker(this.context,format)
+        this.datepicker(this.context, format)
     }
 }
 
-fun View.setDatePickerTV(format:String? = "dd-MM-yyyy") {
-    this as TextView
+fun TextView.setDatePickerTV(format: String? = "dd-MM-yyyy") {
     this.setOnClickListener {
-        this.datepicker(this.context,format!!)
+        this.datepicker(this.context, format!!)
     }
 }
 
