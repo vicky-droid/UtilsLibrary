@@ -163,4 +163,8 @@ private fun getUnitBetweenDates(startDate: Date, endDate: Date, unit: TimeUnit):
     return unit.convert(timeDiff, TimeUnit.MILLISECONDS)
 }
 
+fun isSameDay(cal1: Calendar, cal2: Calendar): Boolean {
+    return cal1[0] == cal2[0] && cal1[1] == cal2[1] && cal1[6] == cal2[6]
+}
+
 

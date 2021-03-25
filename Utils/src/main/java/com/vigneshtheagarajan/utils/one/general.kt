@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
+import com.vigneshtheagarajan.utils.one.app.UtilsLib
+import com.vigneshtheagarajan.utils.one.app.UtilsLib.context
+import com.vigneshtheagarajan.utils.one.app.UtilsLib1
 
 inline fun <reified T : Any> Context.startActivity() = startActivity(IntentFor<T>(this))
 
@@ -14,6 +17,12 @@ inline fun Context.toast(text: CharSequence): Toast =
 
 inline fun Context.longToast(text: CharSequence): Toast =
     Toast.makeText(this, text, Toast.LENGTH_LONG).apply { show() }
+
+inline fun longToast(text: CharSequence): Toast =
+    Toast.makeText(context, text, Toast.LENGTH_LONG).apply { show() }
+
+inline fun toast(text: CharSequence): Toast =
+    Toast.makeText(context, text, Toast.LENGTH_SHORT).apply { show() }
 
 val TAG = "UtilsLibrary"
 

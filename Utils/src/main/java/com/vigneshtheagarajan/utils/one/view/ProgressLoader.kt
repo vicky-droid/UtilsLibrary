@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.Window
 import com.vigneshtheagarajan.utils.R
 import com.vigneshtheagarajan.utils.one.TAG
+import com.vigneshtheagarajan.utils.one.app.UtilsLib.context
 
 class ProgressLoader {
     var mDialog: Dialog? = null
@@ -56,9 +57,9 @@ class ProgressLoader {
     }
 }
 
-fun Context.showNewLoader() {
+fun showNewLoader() {
     try {
-        ProgressLoader.instance?.ProgressLoader(this)
+        ProgressLoader.instance?.ProgressLoader(context)
     } catch (e: Exception) {
         Log.e(TAG, e.message.toString())
     }
