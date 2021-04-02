@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         time.setTimepicker()
         date.setDatePickerET()
         rv_data.setOnClickListener {
-            com.vigneshtheagarajan.utils.one.toast("test")
+//            com.vigneshtheagarajan.utils.one.toast("test")
             AddProductsRepo(commonService).deleteData(null).observe(this){
                      toast("${it.videos[0].name}")
             }
