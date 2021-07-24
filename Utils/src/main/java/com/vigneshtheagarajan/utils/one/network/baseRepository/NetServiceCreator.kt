@@ -1,9 +1,9 @@
 package com.vigneshtheagarajan.utils.one.network.baseRepository
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.vigneshtheagarajan.utils.one.network.HeaderAuthorizationInterceptor
 import com.vigneshtheagarajan.utils.one.network.baseRepository.ApiServiceConstant.authToken
 import com.vigneshtheagarajan.utils.one.network.chucker
+import okhttp3.Authenticator
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -14,8 +14,6 @@ class NetServiceCreator {
 
 
     fun <T> create(serviceClass: Class<T>): T = retrofit.create(serviceClass)
-
-    inline fun <reified T> create(): T = create(T::class.java)
 
     private  val CONNECT_TIME_OUT = 15L
 
@@ -29,7 +27,12 @@ class NetServiceCreator {
 
     private var chucker = false
 
-//    private var authToken = ""
+    private var authenticator = Authenticator.NONE
+
+    fun setAuthenticator(authenticator: Authenticator): NetServiceCreator {
+        this.authenticator = authenticator
+        return this
+    }
 
 
     fun setBaseUrl(url: String): NetServiceCreator {
@@ -62,17 +65,17 @@ class NetServiceCreator {
 
     private val okHttpClient by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
         val newClient = OkHttpClient.Builder()
-            .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)         // 连接超时
-            .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)               // 读取超时
-            .addInterceptor(if (debug) BODY else NONE)      // 请求日志拦截器
+            .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
+            .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
+            .addInterceptor(if (debug) BODY else NONE)
             .addInterceptor(if (chucker) chucker() else NONE)
-            .retryOnConnectionFailure(true)       // 失败重连
+            .retryOnConnectionFailure(true)
+            .authenticator(authenticator)
 
         if (authToken.isNotEmpty())
             newClient.addInterceptor(HeaderAuthorizationInterceptor())
 
         newClient.build()
-//            .build()
     }
 
     private val retrofit by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
@@ -80,7 +83,7 @@ class NetServiceCreator {
             .baseUrl(baseUrl)
 //            .addConverterFactory(MoshiConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+//            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(okHttpClient)
             .build()
     }
