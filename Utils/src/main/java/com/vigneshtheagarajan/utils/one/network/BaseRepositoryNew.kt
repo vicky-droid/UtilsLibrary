@@ -211,6 +211,7 @@ inline fun <C>fetchData(crossinline call: (T) -> Deferred<Response<C>>): LiveDat
 
 
 
+/*
 
 
 class NetServiceCreator {
@@ -290,3 +291,4 @@ class NetServiceCreator {
 
 }
 
+*/

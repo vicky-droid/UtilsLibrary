@@ -3,6 +3,7 @@ package com.vigneshtheagarajan.utils.one.network.baseRepository
 import com.vigneshtheagarajan.utils.one.network.HeaderAuthorizationInterceptor
 import com.vigneshtheagarajan.utils.one.network.baseRepository.ApiServiceConstant.authToken
 import com.vigneshtheagarajan.utils.one.network.chucker
+import com.vigneshtheagarajan.utils.one.network.logger.HttpLogger
 import okhttp3.Authenticator
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,6 +23,8 @@ class NetServiceCreator {
     private var baseUrl = ""
 
     private var debug = false
+
+    private var pretty = false
 
     var errorToast = false
 
@@ -49,6 +52,12 @@ class NetServiceCreator {
         return this
     }
 
+    fun setPrettyJson(bool: Boolean): NetServiceCreator {
+        this.pretty = bool
+        return this
+    }
+
+
     fun enableChucker(bool: Boolean): NetServiceCreator {
         this.chucker = bool
         return this
@@ -56,6 +65,10 @@ class NetServiceCreator {
 
     private val BODY by lazy(mode = LazyThreadSafetyMode.NONE) {
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    }
+
+ private val PRETTY by lazy(mode = LazyThreadSafetyMode.NONE) {
+        HttpLoggingInterceptor(HttpLogger()).setLevel(HttpLoggingInterceptor.Level.BODY)
     }
 
     private val NONE by lazy(mode = LazyThreadSafetyMode.NONE) {
@@ -69,11 +82,13 @@ class NetServiceCreator {
             .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
             .addInterceptor(if (debug) BODY else NONE)
             .addInterceptor(if (chucker) chucker() else NONE)
+            .addInterceptor(if (pretty) PRETTY else NONE)
             .retryOnConnectionFailure(true)
             .authenticator(authenticator)
 
         if (authToken.isNotEmpty())
             newClient.addInterceptor(HeaderAuthorizationInterceptor())
+
 
         newClient.build()
     }
