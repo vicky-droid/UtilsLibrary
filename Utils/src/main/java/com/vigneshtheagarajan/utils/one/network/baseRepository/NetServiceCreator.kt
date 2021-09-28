@@ -16,9 +16,9 @@ class NetServiceCreator {
 
     fun <T> create(serviceClass: Class<T>): T = retrofit.create(serviceClass)
 
-    private  val CONNECT_TIME_OUT = 15L
+    private val CONNECT_TIME_OUT = 15L
 
-    private  val READ_TIME_OUT = 20L
+    private val READ_TIME_OUT = 20L
 
     private var baseUrl = ""
 
@@ -26,7 +26,7 @@ class NetServiceCreator {
 
     private var pretty = false
 
-    var errorToast = false
+    private var errorToast = false
 
     private var chucker = false
 
@@ -42,6 +42,7 @@ class NetServiceCreator {
         this.baseUrl = url
         return this
     }
+
     fun setAuthToken(token: String): NetServiceCreator {
         authToken = token
         return this
@@ -67,7 +68,7 @@ class NetServiceCreator {
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     }
 
- private val PRETTY by lazy(mode = LazyThreadSafetyMode.NONE) {
+    private val PRETTY by lazy(mode = LazyThreadSafetyMode.NONE) {
         HttpLoggingInterceptor(HttpLogger()).setLevel(HttpLoggingInterceptor.Level.BODY)
     }
 

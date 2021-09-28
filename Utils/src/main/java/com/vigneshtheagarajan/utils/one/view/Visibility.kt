@@ -21,5 +21,5 @@ fun View.setViewInVisible() {
 }
 
 fun View.setViewGone() {
-    visibility = View.INVISIBLE
+    visibility = View.GONE
 }

@@ -1,5 +1,6 @@
 package com.vigneshtheagarajan.utils.one
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -23,6 +24,16 @@ inline fun longToast(text: CharSequence): Toast =
 
 inline fun toast(text: CharSequence): Toast =
     Toast.makeText(context, text, Toast.LENGTH_SHORT).apply { show() }
+
+inline fun <reified T : Activity> Context.openActivity(noinline extra: Intent.() -> Unit) {
+    val intent = Intent(this, T::class.java)
+    intent.extra()
+    startActivity(intent)
+}
+
+inline fun <reified T : Activity> Context.openActivity() {
+    startActivity(Intent(this, T::class.java))
+}
 
 val TAG = "UtilsLibrary"
 

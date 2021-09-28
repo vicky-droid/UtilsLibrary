@@ -12,14 +12,14 @@ import com.vigneshtheagarajan.utils.one.app.UtilsLib.context
 
 class ProgressLoader {
     var mDialog: Dialog? = null
-    fun ProgressLoader(mContext: Context?) {
+    fun ProgressLoader() {
         try {
             mDialog?.let {
                 if (it.isShowing)
                     return
             }
 
-            mDialog = Dialog(mContext!!).apply {
+            mDialog = Dialog(context!!).apply {
                 requestWindowFeature(Window.FEATURE_NO_TITLE)
                 setContentView(R.layout.progress_item)
                 window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -59,7 +59,7 @@ class ProgressLoader {
 
 fun showNewLoader() {
     try {
-        ProgressLoader.instance?.ProgressLoader(context)
+        ProgressLoader.instance?.ProgressLoader()
     } catch (e: Exception) {
         Log.e(TAG, e.message.toString())
     }
