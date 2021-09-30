@@ -1,21 +1,21 @@
 package com.vigneshtheagarajan.utils.one.network.logger
 
 import com.google.gson.GsonBuilder
-import org.json.JSONArray
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
 import org.json.JSONException
-import org.json.JSONObject
 
 
- internal fun String.getPrettyJsonString(): String {
+internal fun String.getPrettyJsonString(): String {
     val gson = GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create()
     val message: String = try {
         when {
             this.startsWith("{") -> {
-                val jsonObject = JSONObject(this)
+                val jsonObject= gson.fromJson(this, JsonObject::class.java)
                 gson.toJson(jsonObject)
             }
             this.startsWith("[") -> {
-                val jsonArray = JSONArray(this)
+                val jsonArray= gson.fromJson(this, JsonArray::class.java)
                 gson.toJson(jsonArray)
             }
             else -> {
