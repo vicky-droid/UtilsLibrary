@@ -1,9 +1,14 @@
 package com.vigneshtheagarajan.utils.one.view
 
+import android.R
+import android.app.Activity
 import android.content.Context
 import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import com.vigneshtheagarajan.utils.one.TAG
+
 
 fun Context.showListAlert(list: Array<String>, title: String? = null, value: (Int) -> Unit) {
     // setup the alert builder
@@ -62,7 +67,6 @@ fun Context.showRadioButtonListAlert(
 }
 
 
-/*
 fun Context.showMultiSelectListAlert(
     list: Array<String>,
     title: String? = null,
@@ -99,10 +103,55 @@ fun Context.showMultiSelectListAlert(
 
 
 }
-*/
+
+
+fun  Activity.showDialogBox(
+    message:String?, title: String? = null,
+    textPositiveBtn:String? = null,
+    textNegativeBtn:String? = null,
+    onlyPostiveBtn :Boolean? = false,
+    postiveBtnColour:Int? = null,
+    negativeBtnColour:Int? = null,
+        btnClicked: (postive: Boolean?, negative: Boolean?) -> Unit,
+
+) {
+    val alertDialogBuilder = AlertDialog.Builder(this)
+
+
+    title?.let {
+        alertDialogBuilder.setTitle(it)
+    }
+    alertDialogBuilder.setMessage(message)
+
+    alertDialogBuilder.setPositiveButton(
+        textPositiveBtn ?: "Ok"
+    ) { arg0, arg1 ->
+        btnClicked(true,null)
+    }
+    if (onlyPostiveBtn == false)
+    alertDialogBuilder.setNegativeButton(
+        textNegativeBtn ?: "cancel"
+    ) { arg0, arg1 ->
+        btnClicked(null,true)
+    }
+    val alertDialog = alertDialogBuilder.create()
+
+    val ptiveBtnColour = postiveBtnColour ?: ContextCompat.getColor(this, com.vigneshtheagarajan.utils.R.color.black)
+    val ntiveBtnColour = negativeBtnColour ?: ContextCompat.getColor(this, com.vigneshtheagarajan.utils.R.color.gray)
+    alertDialog.setOnShowListener { dialog -> //
+        dialog as AlertDialog
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ptiveBtnColour);
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ntiveBtnColour);
+    }
+
+    alertDialog.show()
+}
 
 
 
+fun hh(context: Activity) {
+    context.showDialogBox("","","","") { l, p ->
 
+    }
 
-
+}

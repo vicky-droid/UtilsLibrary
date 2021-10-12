@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.vigneshtheagarajan.utils.one.openActivity
 import com.vigneshtheagarajan.utils.one.view.setDatePickerET
 import com.vigneshtheagarajan.utils.one.view.setTimepicker
+import com.vigneshtheagarajan.utilslibrary.app.ViewHelperActivity
 import com.vigneshtheagarajan.utilslibrary.app.network.NetworkActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         date.setDatePickerET()
         network.setOnClickListener {
             openActivity<NetworkActivity>()
+        }
+        viewHelper.setOnClickListener {
+            openActivity<ViewHelperActivity>()
         }
 
     }
