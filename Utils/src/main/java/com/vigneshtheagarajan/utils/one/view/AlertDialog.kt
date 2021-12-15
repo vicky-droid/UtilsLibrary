@@ -16,14 +16,13 @@ fun Context.showListAlert(list: Array<String>, title: String? = null, value: (In
     if (title != null)
         builder.setTitle(title)
 
-//    val animals = arrayOf("horse", "cow", "camel", "sheep", "goat")
     builder.setItems(list) { dialog, which ->
         Log.d(TAG, "showListAlert() called with: dialog = $dialog, which = $which")
         value.invoke(which)
         dialog.dismiss()
     }
 
-// create and show the alert dialog
+    // create and show the alert dialog
     val dialog = builder.create()
     dialog.show()
 }
@@ -40,7 +39,7 @@ fun Context.showRadioButtonListAlert(
     if (title != null)
         builder.setTitle(title)
 
-// add a radio button list
+    // add a radio button list
     val checkedItem = 0
     builder.setSingleChoiceItems(list, checkedItem) { dialog, which ->
         // user checked an item
@@ -78,7 +77,7 @@ fun Context.showMultiSelectListAlert(
     val builder = AlertDialog.Builder(this)
     if (title != null)
         builder.setTitle(title)
-// add a checkbox list
+    // add a checkbox list
     val checkedItems = booleanArrayOf(true, false, false, true, false)
     builder.setMultiChoiceItems(list, checkedItems) { dialog, which, isChecked ->
         // user checked or unchecked a box
@@ -88,7 +87,7 @@ fun Context.showMultiSelectListAlert(
 
 
     if (isShowOKButton) {
-// add OK and Cancel buttons
+    // add OK and Cancel buttons
         builder.setPositiveButton("OK") { dialog, which ->
             // user clicked OK
             value.invoke(which)
@@ -97,7 +96,7 @@ fun Context.showMultiSelectListAlert(
         builder.setNegativeButton("Cancel", null)
     }
 
-// create and show the alert dialog
+    // create and show the alert dialog
     val dialog = builder.create()
     dialog.show()
 
@@ -105,16 +104,29 @@ fun Context.showMultiSelectListAlert(
 }
 
 
-fun  Activity.showDialogBox(
-    message:String?, title: String? = null,
-    textPositiveBtn:String? = null,
-    textNegativeBtn:String? = null,
-    onlyPostiveBtn :Boolean? = false,
-    postiveBtnColour:Int? = null,
-    negativeBtnColour:Int? = null,
-        btnClicked: (postive: Boolean?, negative: Boolean?) -> Unit,
+/**
+ * showAlertDialogBox
+ *
+ * @param message
+ * @param title
+ * @param textPositiveBtn
+ * @param textNegativeBtn
+ * @param onlyPostiveBtn
+ * @param postiveBtnColour
+ * @param negativeBtnColour
+ * @param btnClicked
+ */
 
-) {
+fun Activity.showDialogBox(
+    message: String?, title: String? = null,
+    textPositiveBtn: String? = null,
+    textNegativeBtn: String? = null,
+    onlyPostiveBtn: Boolean? = false,
+    postiveBtnColour: Int? = null,
+    negativeBtnColour: Int? = null,
+    btnClicked: (postive: Boolean?, negative: Boolean?) -> Unit,
+
+    ) {
     val alertDialogBuilder = AlertDialog.Builder(this)
 
 
@@ -126,14 +138,14 @@ fun  Activity.showDialogBox(
     alertDialogBuilder.setPositiveButton(
         textPositiveBtn ?: "Ok"
     ) { arg0, arg1 ->
-        btnClicked(true,null)
+        btnClicked(true, null)
     }
     if (onlyPostiveBtn == false)
-    alertDialogBuilder.setNegativeButton(
-        textNegativeBtn ?: "cancel"
-    ) { arg0, arg1 ->
-        btnClicked(null,true)
-    }
+        alertDialogBuilder.setNegativeButton(
+            textNegativeBtn ?: "cancel"
+        ) { arg0, arg1 ->
+            btnClicked(null, true)
+        }
     val alertDialog = alertDialogBuilder.create()
 
     val ptiveBtnColour = postiveBtnColour ?: ContextCompat.getColor(this, com.vigneshtheagarajan.utils.R.color.black)
@@ -148,9 +160,8 @@ fun  Activity.showDialogBox(
 }
 
 
-
 fun hh(context: Activity) {
-    context.showDialogBox("","","","") { l, p ->
+    context.showDialogBox("", "", "", "") { l, p ->
 
     }
 

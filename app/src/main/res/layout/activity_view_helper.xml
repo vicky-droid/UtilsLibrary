@@ -13,7 +13,15 @@ android:orientation="vertical">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="showAlertDialog"
+        android:text="show Alert Dialog"
+        android:layout_margin="24dp"/>
+
+    <Button
+        android:id="@+id/showNewAlertButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="show New Alert Dialog"
         android:layout_margin="24dp"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

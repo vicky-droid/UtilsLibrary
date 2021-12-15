@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.vigneshtheagarajan.utils.one.toast
-import com.vigneshtheagarajan.utils.one.view.showDialogBox
+import com.vigneshtheagarajan.utils.one.view.*
 import com.vigneshtheagarajan.utilslibrary.R
 import kotlinx.android.synthetic.main.activity_view_helper.*
 
@@ -34,5 +34,15 @@ class ViewHelperActivity : AppCompatActivity() {
 
             }
         }
-    }
+
+        showNewAlertButton.setOnClickListener {
+            MaterialDialog.build(this)
+                .title("Congratulations")
+                .position(MaterialDialog.POSITIONS.CENTER)
+                .body("Enter your name")
+                .input(true,"test hint")
+                .onPositive("Go To My Account") {
+                    toast("$it")
+                }
+        }}
 }
