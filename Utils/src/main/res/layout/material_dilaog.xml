@@ -81,6 +81,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_et"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textMultiLine"/>

@@ -40,7 +40,7 @@ class ViewHelperActivity : AppCompatActivity() {
                 .title("Congratulations")
                 .position(MaterialDialog.POSITIONS.CENTER)
                 .body("Enter your name")
-                .input(true,"test hint")
+                .input(true,"test hint",resources.getColor(R.color.black))
                 .onPositive("Go To My Account") {
                     toast("$it")
                 }

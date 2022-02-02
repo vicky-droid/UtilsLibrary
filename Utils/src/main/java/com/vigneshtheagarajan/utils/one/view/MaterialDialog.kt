@@ -2,6 +2,7 @@ package com.vigneshtheagarajan.utils.one.view
 
 import android.app.Activity
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
@@ -130,12 +131,16 @@ fun AlertDialog.icon(
 
 fun AlertDialog.input(
     input: Boolean = false,
-    hint : String? = null
+    hint: String? = null,
+    color: Int? = null
 ): AlertDialog {
     if (input) {
         hint?.let {
             this.input_text.hint = it
         }
+
+        if (color != null) this.input_text.defaultHintTextColor =  ColorStateList.valueOf(color)
+
         this.input_text.visibility = View.VISIBLE
     }
     return this
