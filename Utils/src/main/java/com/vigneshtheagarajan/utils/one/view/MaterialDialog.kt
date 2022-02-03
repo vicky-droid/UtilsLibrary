@@ -146,7 +146,7 @@ fun AlertDialog.input(
             this.input_text.hint = it
         }
 
-        if (color != null) this.input_text.defaultHintTextColor =  ColorStateList.valueOf(color)
+        if (color != null) this.input_text.defaultHintTextColor = ColorStateList.valueOf(color)
 
         this.input_text.visibility = View.VISIBLE
     }
@@ -158,7 +158,7 @@ fun AlertDialog.setMultiline(
     line: Int = 3
 ): AlertDialog {
     if (isMultiline) {
-        this.input_et.inputType =  InputType.TYPE_TEXT_FLAG_MULTI_LINE
+        this.input_et.inputType = InputType.TYPE_TEXT_FLAG_MULTI_LINE
         this.input_et.setHorizontallyScrolling(false)
         this.input_et.minLines = line
         this.input_et.setLines(line)
@@ -173,12 +173,10 @@ fun AlertDialog.enableCounter(
 ): AlertDialog {
     if (boolean) {
         this.input_text.isCounterEnabled = boolean
-        this.input_text.counterMaxLength=maxSize
+        this.input_text.counterMaxLength = maxSize
     }
     return this
 }
-
-
 
 
 /***
@@ -190,7 +188,7 @@ fun AlertDialog.onPositive(
     text: String,
     buttonBackgroundColor: Int? = null,
     textColor: Int? = null,
-    action: ((input:String?) -> Unit)? = null
+    action: ((input: String?) -> Unit)? = null
 ): AlertDialog {
     this.yesButton.show()
     if (buttonBackgroundColor != null) {
@@ -238,9 +236,8 @@ private fun View.show() {
     this.visibility = View.VISIBLE
 }
 
-fun Context.showListAlertMaterial(list: Array<String>, title: String? = null, value: (Int) -> Unit)   {
+fun Context.showListAlertMaterial(list: Array<String>, title: String? = null, value: (Int) -> Unit) {
     // setup the alert builder
-    // val builder = AlertDialog.Builder(this)
     val builder = AlertDialog.Builder(this, R.style.new_dialog)
 
     if (title != null)
@@ -254,16 +251,11 @@ fun Context.showListAlertMaterial(list: Array<String>, title: String? = null, va
 
     // create and show the alert dialog
     val dialog = builder.create()
-//    dialog.mainLayout.setBackgroundResource(R.color.white)
     dialog.setContentView(R.layout.material_dilaog_empty);
-//    dialog.window?.setBackgroundDrawableResource(R.drawable.layout_rounded_white,);
-//    dialog.window?.setContentView(R.layout.material_dilaog_empty);
 
     dialog.show()
 
 //    dialog.position(MaterialDialog.POSITIONS.CENTER)
-
-
 
 }
 
