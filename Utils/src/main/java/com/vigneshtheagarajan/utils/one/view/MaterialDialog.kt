@@ -1,17 +1,23 @@
 package com.vigneshtheagarajan.utils.one.view
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Typeface
+import android.text.InputType
+import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AlertDialog
 import com.vigneshtheagarajan.utils.R
-import com.vigneshtheagarajan.utils.one.toast
+import com.vigneshtheagarajan.utils.one.TAG
 import kotlinx.android.synthetic.main.material_dilaog.*
+import kotlinx.android.synthetic.main.material_dilaog.mainLayout
+import kotlinx.android.synthetic.main.material_dilaog_empty.*
 
 class MaterialDialog {
 
@@ -21,7 +27,7 @@ class MaterialDialog {
 
     companion object {
 
-        private lateinit var layoutInflater: LayoutInflater
+        lateinit var layoutInflater: LayoutInflater
 
         /***
          * core method For Alert Dialog
@@ -42,6 +48,7 @@ class MaterialDialog {
             alert.show()
             return alert
         }
+
     }
 }
 
@@ -146,6 +153,33 @@ fun AlertDialog.input(
     return this
 }
 
+fun AlertDialog.setMultiline(
+    isMultiline: Boolean = false,
+    line: Int = 3
+): AlertDialog {
+    if (isMultiline) {
+        this.input_et.inputType =  InputType.TYPE_TEXT_FLAG_MULTI_LINE
+        this.input_et.setHorizontallyScrolling(false)
+        this.input_et.minLines = line
+        this.input_et.setLines(line)
+        this.input_et.gravity = Gravity.TOP
+    }
+    return this
+}
+
+fun AlertDialog.enableCounter(
+    boolean: Boolean = false,
+    maxSize: Int = 3
+): AlertDialog {
+    if (boolean) {
+        this.input_text.isCounterEnabled = boolean
+        this.input_text.counterMaxLength=maxSize
+    }
+    return this
+}
+
+
+
 
 /***
  * onPositive Button Properties For Alert Dialog
@@ -199,7 +233,38 @@ fun AlertDialog.onNegative(
     return this
 }
 
+
 private fun View.show() {
     this.visibility = View.VISIBLE
 }
+
+fun Context.showListAlertMaterial(list: Array<String>, title: String? = null, value: (Int) -> Unit)   {
+    // setup the alert builder
+    // val builder = AlertDialog.Builder(this)
+    val builder = AlertDialog.Builder(this, R.style.new_dialog)
+
+    if (title != null)
+        builder.setTitle(title)
+
+    builder.setItems(list) { dialog, which ->
+        Log.d(TAG, "showListAlert() called with: dialog = $dialog, which = $which")
+        value.invoke(which)
+        dialog.dismiss()
+    }
+
+    // create and show the alert dialog
+    val dialog = builder.create()
+//    dialog.mainLayout.setBackgroundResource(R.color.white)
+    dialog.setContentView(R.layout.material_dilaog_empty);
+//    dialog.window?.setBackgroundDrawableResource(R.drawable.layout_rounded_white,);
+//    dialog.window?.setContentView(R.layout.material_dilaog_empty);
+
+    dialog.show()
+
+//    dialog.position(MaterialDialog.POSITIONS.CENTER)
+
+
+
+}
+
 

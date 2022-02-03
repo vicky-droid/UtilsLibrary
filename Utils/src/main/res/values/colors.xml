@@ -4,6 +4,6 @@
     <color name="white">#FFFFFF</color>
     <color name="gray">#636363</color>
 
-    <color name="dark_clr">#000000</color>
-    <color name="light_clr">#FFFFFF</color>
+    <color name="dark_clr">#161616</color>
+    <color name="light_clr">#EAEAEA</color>
 </resources>

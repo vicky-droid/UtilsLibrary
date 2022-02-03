@@ -40,9 +40,32 @@ class ViewHelperActivity : AppCompatActivity() {
                 .title("Congratulations")
                 .position(MaterialDialog.POSITIONS.CENTER)
                 .body("Enter your name")
-                .input(true,"test hint",resources.getColor(R.color.black))
+                .input(true,"test hint",resources.getColor(R.color.dark_clr))
+                .setMultiline(true,5)
+                .enableCounter(true,500)
                 .onPositive("Go To My Account") {
                     toast("$it")
                 }
-        }}
+        }
+
+
+        showListAlertButton.setOnClickListener {
+           val list =  listOf("yes","No").toTypedArray()
+            showListAlertMaterial(list,"this is test????"){
+                toast(list[it])
+            }
+        }
+
+        showListAlertButtonMaterial.setOnClickListener {
+           val list =  listOf("yes","No").toTypedArray()
+            showListAlert(list,"this is test????"){
+                toast(list[it])
+            }
+        }
+
+
+
+
+
+    }
 }

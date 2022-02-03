@@ -4,10 +4,13 @@ import android.R
 import android.app.Activity
 import android.content.Context
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.RelativeLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.vigneshtheagarajan.utils.one.TAG
+import kotlinx.android.synthetic.main.material_dilaog.*
 
 
 fun Context.showListAlert(list: Array<String>, title: String? = null, value: (Int) -> Unit) {
@@ -26,6 +29,8 @@ fun Context.showListAlert(list: Array<String>, title: String? = null, value: (In
     val dialog = builder.create()
     dialog.show()
 }
+
+
 
 fun Context.showRadioButtonListAlert(
     list: Array<String>,

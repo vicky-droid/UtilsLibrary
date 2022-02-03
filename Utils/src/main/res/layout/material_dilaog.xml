@@ -5,6 +5,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:paddingBottom="16dp"
+                android:id="@+id/root"
                 android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
 
 
@@ -78,13 +79,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:hint="add hint"
             android:textColorHint="@color/design_default_color_primary"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_et"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textMultiLine"/>
+
+        />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView

@@ -32,4 +32,11 @@
         <item name="android:windowMinWidthMinor">100%</item>
     </style>
 
+    <style name="new_dialog" parent="Base.Theme.AppCompat.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/layout_rounded_white</item>
+        <item name="android:textColor">@color/dark_clr</item>
+        <item name="textColorAlertDialogListItem">@color/dark_clr</item>
+    </style>
+
+
 </resources>
