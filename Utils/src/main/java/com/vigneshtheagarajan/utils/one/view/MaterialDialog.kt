@@ -169,7 +169,7 @@ fun AlertDialog.setMultiline(
 
 fun AlertDialog.enableCounter(
     boolean: Boolean = false,
-    maxSize: Int = 3
+    maxSize: Int = 300
 ): AlertDialog {
     if (boolean) {
         this.input_text.isCounterEnabled = boolean
