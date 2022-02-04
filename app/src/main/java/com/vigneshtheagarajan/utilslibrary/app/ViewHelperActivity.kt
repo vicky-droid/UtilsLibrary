@@ -42,7 +42,7 @@ class ViewHelperActivity : AppCompatActivity() {
                 .body("Enter your name")
                 .input(true,"test hint",resources.getColor(R.color.dark_clr))
                 .setMultiline(true,5)
-                .enableCounter(true,500)
+                .enableCounter(true,100)
                 .onPositive("Go To My Account") {
                     toast("$it")
                 }

@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Typeface
+import android.text.InputFilter
 import android.text.InputType
 import android.util.Log
 import android.view.Gravity
@@ -174,6 +175,7 @@ fun AlertDialog.enableCounter(
     if (boolean) {
         this.input_text.isCounterEnabled = boolean
         this.input_text.counterMaxLength = maxSize
+        this.input_et.filters += InputFilter.LengthFilter(maxSize)
     }
     return this
 }
