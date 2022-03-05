@@ -9,7 +9,8 @@ import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 
 
-abstract class BaseRepositorySuspend<T>(@PublishedApi internal val service: T) {
+//abstract class BaseRepositorySuspend<T>(@PublishedApi internal val service: T) {
+abstract class BaseRepositorySuspend<T>(val service: T) {
 
     inline fun <C> run(crossinline bar: suspend () -> C): LiveData<C> {
         log("run")
