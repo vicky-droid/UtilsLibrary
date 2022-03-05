@@ -2,7 +2,10 @@ package com.vigneshtheagarajan.utilslibrary
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.vigneshtheagarajan.utils.one.openActivity
+import com.vigneshtheagarajan.utils.one.*
+import com.vigneshtheagarajan.utils.one.network.logger.AdvancedLog.d
+import com.vigneshtheagarajan.utils.one.network.logger.AdvancedLog.db
+import com.vigneshtheagarajan.utils.one.network.logger.AdvancedLog.debugBeautify
 import com.vigneshtheagarajan.utils.one.view.setDatePickerET
 import com.vigneshtheagarajan.utils.one.view.setTimepicker
 import com.vigneshtheagarajan.utilslibrary.app.ViewHelperActivity
@@ -26,11 +29,11 @@ class MainActivity : AppCompatActivity() {
             openActivity<ViewHelperActivity>()
         }
 
+        d{"nnn"}
+        db{"nnn" }
+
     }
 
 
 }
-
-
-
 
