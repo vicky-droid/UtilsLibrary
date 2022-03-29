@@ -3,6 +3,10 @@
     <!-- set the rounded drawable as background to your bottom sheet -->
     <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bg_bottom_sheet_dialog_fragment</item>
+        <item name="android:textColor">@color/dark_clr</item>
+        <item name="android:editTextBackground">@color/light_clr</item>
+        <item name="android:editTextColor">@color/dark_clr</item>
+
     </style>
 
     <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
