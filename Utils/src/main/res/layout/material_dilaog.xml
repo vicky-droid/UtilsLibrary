@@ -15,10 +15,10 @@
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/layout_rounded_white"
-        android:padding="24dp">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="16dp"
+        android:background="@drawable/layout_rounded_white" android:padding="24dp">
 
 
         <ImageView
@@ -31,7 +31,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/layout_rounded_white" />
+            app:srcCompat="@drawable/layout_rounded_white"/>
 
         <TextView
             android:id="@+id/title"
@@ -44,7 +44,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image" />
+            app:layout_constraintTop_toBottomOf="@+id/image"/>
 
         <TextView
             android:id="@+id/subHeading"
@@ -60,77 +60,73 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
-
+            app:layout_constraintTop_toBottomOf="@+id/title"/>
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
-            android:textSize="14sp"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/subHeading"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:hint="add hint"
             android:textColorHint="@color/design_default_color_primary"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subHeading"
 
         >
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_et"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_et"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
 
-        />
+            />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/yesButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:backgroundTint="@color/black"
             android:background="@drawable/layout_rounded_white"
+            android:backgroundTint="@color/black"
             android:gravity="center_vertical|center_horizontal"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:text="done"
+            android:text="Done"
+            android:paddingHorizontal="50dp"
             android:textColor="@color/white"
             android:textSize="16sp"
+            android:textStyle="bold"
             android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_text" />
+            app:layout_constraintEnd_toStartOf="@+id/noButton"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_text"/>
 
         <TextView
             android:id="@+id/noButton"
-            android:layout_width="match_parent"
+            android:layout_width="140dp"
             android:layout_height="48dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/black"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/layout_rounded_white"
+            android:backgroundTint="@color/light_gray"
             android:gravity="center_vertical|center_horizontal"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:text="done"
-            android:textColor="@color/white"
+            android:text="No"
+            android:textColor="@color/gray"
             android:textSize="16sp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/yesButton" />
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintStart_toEndOf="@+id/yesButton"
+            app:layout_constraintTop_toTopOf="@+id/yesButton"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
