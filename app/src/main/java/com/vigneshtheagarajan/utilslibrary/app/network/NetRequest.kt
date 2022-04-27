@@ -12,6 +12,7 @@ object NetRequest {
             .enableDebug(false)            //enable disable HttpLoggingInterceptor
             .enableChucker(true)           //enable disable chucker debug library
             .setPrettyJson(true)                //beautifully print json as Human readable in Logcat
+            .enableAuthTokenInterceptor(true)  //enable AuthTokenInterceptor to set if authToken refresh
             .create(ApiCommonService::class.java)
 
     }
